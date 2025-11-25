@@ -5,9 +5,8 @@ on:
       bucketName:
         description: "Please Provide S3 Bucket Name"
         required: true
- jobs:
+jobs:
   create-bucket:
-  steps:
     runs-on: ubuntu-latest
     steps:
       - name: Config AWS Credentials
