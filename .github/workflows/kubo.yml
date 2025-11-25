@@ -1,0 +1,20 @@
+name: Linux Test
+on:
+  workflow_dispatch:
+jobs:
+  file-create:
+    name: SSH to Lightsail Server and Create File
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Execute SSH Command
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            echo "Repo : ${{ github.repository }}" > ~/test.txt
+            echo "File Create Successfully"
+            cat ~/test.txt
